@@ -1,0 +1,17 @@
+<h1>Create New Hipster Word</h1>
+
+<%= form_tag "/hipster" method: :post do %>
+	<div>
+		<%= label_tag :word %>
+		<%= label_field_tag :word %>
+	</div>
+	<div>
+		<%= label_tag :sentence %>
+		<%= label_field_tag :sentence %>
+	</div>	
+	<div>
+		<%= label_tag :paragraph %>
+		<%= label_field_tag :paragraph %>
+	</div>
+	<%= submit_tag "Create New Hipster" %>
+<% end %>
