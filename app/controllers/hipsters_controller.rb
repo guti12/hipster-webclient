@@ -1,6 +1,9 @@
 class HipstersController < ApplicationController
   def index
-  	@hipsters = Unirest.get("localhost:3000/api/v1/hipster.json").body
+    @hipsters = []
+    Unirest.get("#{ ENV["API_HOST"] }/api/v2/hipster.json").body.each do |hipster_hash|
+      @hipsters << Hipster.new(hipster_hash)
+    end
   end
 
   def new
@@ -14,11 +17,11 @@ class HipstersController < ApplicationController
   																		"Accept" => "application/json"
   																		},
   												).body
-  	redirect_to "/hipster/#{ employee["id"] }"
+  	redirect_to "/hipster/#{ hipster.id }"
   	
   end
 
   def show
-  	@hipster = Unirest.get("localhost:3000/api/v1/hipster/#{params[:id]}.json").body
+  	@hipster = Hipster.find(hipster.id)
   end
 end

@@ -1,6 +1,6 @@
 <h1>Hipsters Words</h1>
 
 <% @hipsters.each do |hipster| %>
-	<h2><a href="/hipster/<%= hipster["id"] %>"><%= hipster["word"] %></h2>
+	<h2><a href="/hipster/<%= hipster.id %>"><%= hipster.word %></h2>
 	<br>
 <% end %>
